@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\VF.Catalog.Domain\\VF.Catalog.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\src\\VF.Catalog.Domain\\VF.Catalog.Domain.csproj",
       "projectName": "VF.Catalog.Domain",
-      "projectPath": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\VF.Catalog.Domain\\VF.Catalog.Domain.csproj",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\src\\VF.Catalog.Domain\\VF.Catalog.Domain.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\VF.Catalog.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\src\\VF.Catalog.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",

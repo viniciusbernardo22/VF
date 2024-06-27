@@ -5522,11 +5522,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\VF.Catalog.UnitTests\\VF.Catalog.UnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\tests\\VF.Catalog.UnitTests\\VF.Catalog.UnitTests.csproj",
       "projectName": "VF.Catalog.UnitTests",
-      "projectPath": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\VF.Catalog.UnitTests\\VF.Catalog.UnitTests.csproj",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\tests\\VF.Catalog.UnitTests\\VF.Catalog.UnitTests.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\VF.Catalog.UnitTests\\obj\\",
+      "outputPath": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\tests\\VF.Catalog.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",

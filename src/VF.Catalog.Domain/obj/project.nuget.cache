@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JgWW7nBrYBx4RJW4lTd+NkKLdUpLtZei8uGhOkfUUWzLYiYxUnE/7X0C/lfDhKDD6KGwG1FqOdQv41GkkDdByw==",
+  "dgSpecHash": "zqAFSo1EKZ6BjO7qVcV2hGbgs83jZsM36ckbTTY7fE1MJaKRz1JKGVYupD8LCtNZKdzTL3AJ6n79jRvwKgiMrA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\VF.Catalog.Domain\\VF.Catalog.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\Courses\\VF.Catalog\\src\\VF.Catalog.Domain\\VF.Catalog.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
