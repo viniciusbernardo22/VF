@@ -11,7 +11,8 @@
           "Microsoft.NET.Test.Sdk": "17.5.0",
           "coverlet.collector": "3.2.0",
           "xunit": "2.4.2",
-          "xunit.runner.visualstudio": "2.4.5"
+          "xunit.runner.visualstudio": "2.4.5",
+          "VF.Catalog.Domain": "1.0.0.0"
         },
         "runtime": {
           "VF.Catalog.UnitTests.dll": {}
@@ -1019,7 +1020,15 @@
           }
         }
       },
-      "xunit.runner.visualstudio/2.4.5": {}
+      "xunit.runner.visualstudio/2.4.5": {},
+      "VF.Catalog.Domain/1.0.0.0": {
+        "runtime": {
+          "VF.Catalog.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -1650,6 +1659,11 @@
       "sha512": "sha512-OwHamvBdUKgqsXfBzWiCW/O98BTx81UKzx2bieIOQI7CZFE5NEQZGi8PBQGIKawDW96xeRffiNf20SjfC0x9hw==",
       "path": "xunit.runner.visualstudio/2.4.5",
       "hashPath": "xunit.runner.visualstudio.2.4.5.nupkg.sha512"
+    },
+    "VF.Catalog.Domain/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

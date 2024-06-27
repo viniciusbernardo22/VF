@@ -98,3 +98,6 @@ C:\Users\Usuario\Desktop\Courses\VF.Catalog\tests\VF.Catalog.UnitTests\obj\Debug
 C:\Users\Usuario\Desktop\Courses\VF.Catalog\tests\VF.Catalog.UnitTests\obj\Debug\net6.0\VF.Catalog.UnitTests.pdb
 C:\Users\Usuario\Desktop\Courses\VF.Catalog\tests\VF.Catalog.UnitTests\obj\Debug\net6.0\VF.Catalog.UnitTests.genruntimeconfig.cache
 C:\Users\Usuario\Desktop\Courses\VF.Catalog\tests\VF.Catalog.UnitTests\obj\Debug\net6.0\ref\VF.Catalog.UnitTests.dll
+C:\Users\Usuario\Desktop\Courses\VF.Catalog\tests\VF.Catalog.UnitTests\bin\Debug\net6.0\CoverletSourceRootsMapping
+C:\Users\Usuario\Desktop\Courses\VF.Catalog\tests\VF.Catalog.UnitTests\bin\Debug\net6.0\VF.Catalog.Domain.dll
+C:\Users\Usuario\Desktop\Courses\VF.Catalog\tests\VF.Catalog.UnitTests\bin\Debug\net6.0\VF.Catalog.Domain.pdb

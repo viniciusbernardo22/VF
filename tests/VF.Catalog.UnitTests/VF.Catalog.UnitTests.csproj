@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\VF.Catalog.Domain\VF.Catalog.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
