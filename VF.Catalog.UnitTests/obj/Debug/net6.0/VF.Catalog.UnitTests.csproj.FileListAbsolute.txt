@@ -1,0 +1,6 @@
+C:\Users\Usuario\Desktop\Courses\VF.Catalog\VF.Catalog.UnitTests\obj\Debug\net6.0\VF.Catalog.UnitTests.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\Courses\VF.Catalog\VF.Catalog.UnitTests\obj\Debug\net6.0\VF.Catalog.UnitTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Desktop\Courses\VF.Catalog\VF.Catalog.UnitTests\obj\Debug\net6.0\VF.Catalog.UnitTests.AssemblyInfoInputs.cache
+C:\Users\Usuario\Desktop\Courses\VF.Catalog\VF.Catalog.UnitTests\obj\Debug\net6.0\VF.Catalog.UnitTests.AssemblyInfo.cs
+C:\Users\Usuario\Desktop\Courses\VF.Catalog\VF.Catalog.UnitTests\obj\Debug\net6.0\VF.Catalog.UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Courses\VF.Catalog\VF.Catalog.UnitTests\obj\Debug\net6.0\VF.Catalog.UnitTests.sourcelink.json
