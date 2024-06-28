@@ -37,8 +37,13 @@ public class Category : Base.Entity
         if(Name.Length < 3)
             throw new EntityValidationException($"{nameof(Name)} should have a minimum of 3 characters long");
         
+        if(Name.Length > 255)
+            throw new EntityValidationException($"{nameof(Name)} should have a maximum of 255 characters long");
+        
         if(Description is null)
             throw new EntityValidationException($"{nameof(Description)} should not be null");
         
+        if(Description.Length > 10000)
+            throw new EntityValidationException($"{nameof(Description)} should have a maximum of 10k characters long");
     }
 }
