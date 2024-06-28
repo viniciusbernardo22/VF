@@ -159,4 +159,66 @@ public class CategoryTest
         
         Assert.False(category.IsActive);
     }
+
+
+    [Fact(DisplayName = nameof(UpdateCategory))]
+    [Trait("Domain", "Category - Aggregates")]
+    public void UpdateCategory()
+    {
+        var category = new DomainEntity.Category("CategoryName", "Category Description");
+        var newValues = new { Name = "New Category Name", Description = "New Description Name" };
+
+        category.Update(newValues.Name, newValues.Description);
+        
+        Assert.Equal(category.Name, newValues.Name);
+        Assert.Equal(category.Description, newValues.Description);
+    }
+    
+    [Fact(DisplayName = nameof(UpdateOnlyCategoryName))]
+    [Trait("Domain", "Category - Aggregates")]
+    public void UpdateOnlyCategoryName()
+    {
+        var category = new DomainEntity.Category("CategoryName", "Category Description");
+        var newValues = new { Name = "New Category Name"};
+        var currentDescription = category.Description;
+        
+        category.Update(newValues.Name);
+        
+        Assert.Equal(category.Name, newValues.Name);
+        Assert.Equal(currentDescription, category.Description);
+    }
+    
+    [Theory(DisplayName = nameof(UpdateErrorWhenNameIsEmpty))]
+    [Trait("Domain", "Category - Aggregates")]
+    [InlineData("")]
+    [InlineData(null)]
+    [InlineData("      ")]
+    public void UpdateErrorWhenNameIsEmpty(string name)
+    {
+        var category = new DomainEntity.Category("CategoryName", "Category Description");
+        Action action = () => category.Update(name!);
+
+        var exception = Assert.Throws<EntityValidationException>(action);
+
+        var expectedMessage = _errorMessages.EmptyOrNullMessage("Name");
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+    
+    
+    [Theory(DisplayName = nameof(UpdateErrorWhenNameIsSmallerThan3Characters))]
+    [Trait("Domain", "Category - Aggregates")]
+    [InlineData("1")]
+    [InlineData("23")]
+    [InlineData("c")]
+    [InlineData("ca")]
+    public void UpdateErrorWhenNameIsSmallerThan3Characters(string invalidName)
+    {
+        var category = new DomainEntity.Category("CategoryName", "Category Description");
+        Action action = () => category.Update(invalidName);
+        
+        var exception = Assert.Throws<EntityValidationException>(action);
+        var expectedMessage = _errorMessages.MinLengthMessage("Name", 3);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+
 }

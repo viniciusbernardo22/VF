@@ -60,4 +60,11 @@ public class Category : Entity
         IsActive = false;
         ValidateEntity();
     }
+
+    public void Update(string name, string? description = null)
+    {
+        Name = name;
+        Description = description ?? Description;
+        ValidateEntity();
+    }
 }
