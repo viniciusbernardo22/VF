@@ -83,4 +83,17 @@ public class CategoryTest
         
         Assert.Equal(expectedMessage, exception.Message);
     }
+
+    [Theory(DisplayName = nameof(InstatiateErrorWhenNameIsSmallerThanThreeCharacters))]
+    [Trait("Domain", "Category - Aggregates")]
+    [InlineData("c")]
+    [InlineData("ca")]
+    public void InstatiateErrorWhenNameIsSmallerThanThreeCharacters(string invalidName)
+    {
+        Action action = () => new DomainEntity.Category(invalidName, "valid description");
+        
+        var exception = Assert.Throws<EntityValidationException>(action);
+        var expectedMessage = "Name should have a minimum of 3 characters long";
+        Assert.Equal(expectedMessage, exception.Message);
+    }
 }
