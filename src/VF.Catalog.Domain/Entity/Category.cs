@@ -1,9 +1,8 @@
-﻿using VF.Catalog.Domain.Entity.Base;
+﻿
 using VF.Catalog.Domain.Exceptions;
-
 namespace VF.Catalog.Domain.Entity;
 
-public class Category : Base.Entity
+public class Category : Entity
 {
     public Guid Id { get; private set; } = Guid.NewGuid();
     public string Name { get; private set; }
@@ -31,19 +30,22 @@ public class Category : Base.Entity
 
     public sealed override void ValidateEntity()
     {
+        ErrorMessages errorMessage = new ErrorMessages();
+        
         if (String.IsNullOrWhiteSpace(Name))
-            throw new EntityValidationException($"{nameof(Name)} should not be empty or null");
+            throw new EntityValidationException(errorMessage.EmptyOrNullMessage(nameof(Name)));
         
         if(Name.Length < 3)
-            throw new EntityValidationException($"{nameof(Name)} should have a minimum of 3 characters long");
+            throw new EntityValidationException(errorMessage.MinLengthMessage(nameof(Name), 3));
         
         if(Name.Length > 255)
-            throw new EntityValidationException($"{nameof(Name)} should have a maximum of 255 characters long");
+            throw new EntityValidationException(errorMessage.MaxLengthMessage(nameof(Name), 255));
         
         if(Description is null)
-            throw new EntityValidationException($"{nameof(Description)} should not be null");
+            throw new EntityValidationException(errorMessage.ShouldNotBeNullMessage(nameof(Description)));
         
         if(Description.Length > 10000)
-            throw new EntityValidationException($"{nameof(Description)} should have a maximum of 10k characters long");
+            throw new EntityValidationException(errorMessage.MaxLengthMessage(nameof(Description), 10000));
+        
     }
 }

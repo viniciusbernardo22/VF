@@ -1,4 +1,4 @@
-﻿namespace VF.Catalog.Domain.Entity.Base;
+﻿namespace VF.Catalog.Domain.Entity;
 
 public abstract class Entity
 {

@@ -1,10 +1,13 @@
-﻿using VF.Catalog.Domain.Exceptions;
+﻿using VF.Catalog.Domain;
+using VF.Catalog.Domain.Exceptions;
 using Xunit;
 using DomainEntity = VF.Catalog.Domain.Entity;
 namespace VF.Catalog.UnitTests.Domain.Entity.Category;
 
 public class CategoryTest
 {
+    private readonly ErrorMessages _errorMessages = new ErrorMessages();
+    
     [Fact(DisplayName = nameof(Instantiate))]
     [Trait("Domain", "Category - Aggregates")]
     public void Instantiate()
@@ -69,7 +72,7 @@ public class CategoryTest
 
         var exception = Assert.Throws<EntityValidationException>(action);
 
-        var expectedMessage = "Name should not be empty or null";
+        var expectedMessage = _errorMessages.EmptyOrNullMessage("Name");
         Assert.Equal(expectedMessage, exception.Message);
     }
     
@@ -79,7 +82,7 @@ public class CategoryTest
     {
         Action action = () => new DomainEntity.Category("category name", null);
         var exception = Assert.Throws<EntityValidationException>(action);
-        var expectedMessage = "Description should not be null";
+        var expectedMessage = _errorMessages.ShouldNotBeNullMessage("Description");
         
         Assert.Equal(expectedMessage, exception.Message);
     }
@@ -93,7 +96,7 @@ public class CategoryTest
         Action action = () => new DomainEntity.Category(invalidName, "valid description");
         
         var exception = Assert.Throws<EntityValidationException>(action);
-        var expectedMessage = "Name should have a minimum of 3 characters long";
+        var expectedMessage = _errorMessages.MinLengthMessage("Name", 3);
         Assert.Equal(expectedMessage, exception.Message);
     }
     
@@ -106,7 +109,7 @@ public class CategoryTest
         Action action = () => new DomainEntity.Category(invalidName, "valid description");
         
         var exception = Assert.Throws<EntityValidationException>(action);
-        var expectedMessage = "Name should have a maximum of 255 characters long";
+        var expectedMessage = _errorMessages.MaxLengthMessage("Name", 255);
         Assert.Equal(expectedMessage, exception.Message);
     }
     
@@ -119,7 +122,7 @@ public class CategoryTest
         Action action = () => new DomainEntity.Category("Valid Name", invalidDescription);
         
         var exception = Assert.Throws<EntityValidationException>(action);
-        var expectedMessage = "Description should have a maximum of 10k characters long";
+        var expectedMessage = _errorMessages.MaxLengthMessage("Description", 10000);
         Assert.Equal(expectedMessage, exception.Message);
     }
 }
