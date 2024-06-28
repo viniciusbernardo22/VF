@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using VF.Catalog.Domain.Exceptions;
+using Xunit;
 using DomainEntity = VF.Catalog.Domain.Entity;
 namespace VF.Catalog.UnitTests.Domain.Entity.Category;
 
@@ -23,9 +24,10 @@ public class CategoryTest
         Assert.Equal(validData.Description, category.Description);
         Assert.NotEqual(default(Guid), category.Id);
         Assert.NotEqual(default(DateTime), category.CreatedAt);
-        Assert.True(category.CreatedAt > datetimeBefore );
+         Assert.True(category.CreatedAt > datetimeBefore);
         Assert.True(category.CreatedAt < datetimeAfter);
         Assert.True(category.IsActive);
+        
     }
 
     
@@ -56,4 +58,29 @@ public class CategoryTest
         Assert.Equal(category.IsActive, isActive);
     }
 
+    [Theory(DisplayName = nameof(InstantiateErrorWhenNameIsEmpty))]
+    [Trait("Domain", "Category - Aggregates")]
+    [InlineData("")]
+    [InlineData(null)]
+    [InlineData("      ")]
+    public void InstantiateErrorWhenNameIsEmpty(string name)
+    {
+        Action action = () => new DomainEntity.Category(name, "description");
+
+        var exception = Assert.Throws<EntityValidationException>(action);
+
+        var expectedMessage = "Name should not be empty or null";
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+    
+    [Fact(DisplayName = nameof(InstantiateErrorWhenDescriptionIsNull))]
+    [Trait("Domain", "Category - Aggregates")]
+    public void InstantiateErrorWhenDescriptionIsNull()
+    {
+        Action action = () => new DomainEntity.Category("category name", null);
+        var exception = Assert.Throws<EntityValidationException>(action);
+        var expectedMessage = "Description should not be null";
+        
+        Assert.Equal(expectedMessage, exception.Message);
+    }
 }
