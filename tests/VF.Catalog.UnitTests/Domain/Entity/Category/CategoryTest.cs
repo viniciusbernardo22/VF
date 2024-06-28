@@ -221,4 +221,31 @@ public class CategoryTest
         Assert.Equal(expectedMessage, exception.Message);
     }
 
+    [Fact(DisplayName = nameof(UpdateErrorWhenNameIsGreaterThan255Characters))]
+    [Trait("Domain", "Category - Aggregates")]
+    public void UpdateErrorWhenNameIsGreaterThan255Characters()
+    {
+        var category = new DomainEntity.Category("CategoryName", "Category Description");
+        var invalidName = String.Join(null, Enumerable.Range(0, 256).Select(_ => "a").ToArray());
+
+        Action action = () => category.Update(invalidName);
+        
+        var exception = Assert.Throws<EntityValidationException>(action);
+        var expectedMessage = _errorMessages.MaxLengthMessage("Name", 255);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
+    
+    [Fact(DisplayName = nameof(UpdateErrorWhenCategoryIsGreaterThan10KCharacters))]
+    [Trait("Domain", "Category - Aggregates")]
+    public void UpdateErrorWhenCategoryIsGreaterThan10KCharacters()
+    {
+        var category = new DomainEntity.Category("CategoryName", "Category Description");
+        var invalidDescription = String.Join(null, Enumerable.Range(0, 10001).Select(_ => "d").ToArray());
+
+        Action action = () => category.Update("validName", invalidDescription);
+        
+        var exception = Assert.Throws<EntityValidationException>(action);
+        var expectedMessage = _errorMessages.MaxLengthMessage("Description", 10000);
+        Assert.Equal(expectedMessage, exception.Message);
+    }
 }

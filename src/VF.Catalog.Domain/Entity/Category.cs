@@ -67,4 +67,5 @@ public class Category : Entity
         Description = description ?? Description;
         ValidateEntity();
     }
+    
 }
