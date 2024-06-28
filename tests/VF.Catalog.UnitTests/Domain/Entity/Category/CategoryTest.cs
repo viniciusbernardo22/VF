@@ -87,11 +87,11 @@ public class CategoryTest
         Assert.Equal(expectedMessage, exception.Message);
     }
 
-    [Theory(DisplayName = nameof(InstatiateErrorWhenNameIsSmallerThan3Characters))]
+    [Theory(DisplayName = nameof(InstantiateErrorWhenNameIsSmallerThan3Characters))]
     [Trait("Domain", "Category - Aggregates")]
     [InlineData("c")]
     [InlineData("ca")]
-    public void InstatiateErrorWhenNameIsSmallerThan3Characters(string invalidName)
+    public void InstantiateErrorWhenNameIsSmallerThan3Characters(string invalidName)
     {
         Action action = () => new DomainEntity.Category(invalidName, "valid description");
         
@@ -100,9 +100,9 @@ public class CategoryTest
         Assert.Equal(expectedMessage, exception.Message);
     }
     
-    [Fact(DisplayName = nameof(InstatiateErrorWhenNameIsGreaterThan255Characters))]
+    [Fact(DisplayName = nameof(InstantiateErrorWhenNameIsGreaterThan255Characters))]
     [Trait("Domain", "Category - Aggregates")]
-    public void InstatiateErrorWhenNameIsGreaterThan255Characters()
+    public void InstantiateErrorWhenNameIsGreaterThan255Characters()
     {
         var invalidName = String.Join(null, Enumerable.Range(0, 256).Select(_ => "a").ToArray());
         
@@ -113,9 +113,9 @@ public class CategoryTest
         Assert.Equal(expectedMessage, exception.Message);
     }
     
-    [Fact(DisplayName = nameof(InstatiateErrorWhenCategoryIsGreaterThan10kCharacters))]
+    [Fact(DisplayName = nameof(InstantiateErrorWhenCategoryIsGreaterThan10KCharacters))]
     [Trait("Domain", "Category - Aggregates")]
-    public void InstatiateErrorWhenCategoryIsGreaterThan10kCharacters()
+    public void InstantiateErrorWhenCategoryIsGreaterThan10KCharacters()
     {
         var invalidDescription = String.Join(null, Enumerable.Range(0, 10001).Select(_ => "d").ToArray());
         
@@ -124,5 +124,39 @@ public class CategoryTest
         var exception = Assert.Throws<EntityValidationException>(action);
         var expectedMessage = _errorMessages.MaxLengthMessage("Description", 10000);
         Assert.Equal(expectedMessage, exception.Message);
+    }
+
+    [Fact(DisplayName = nameof(ActivateCategory))]
+    [Trait("Domain", "Category - Aggregates")]
+    public void ActivateCategory()
+    {
+        var validData = new 
+        {
+            Name = "category name",
+            Description = "category description",
+        };
+
+        var category = new DomainEntity.Category(validData.Name, validData.Description, false);
+
+        category.Activate();
+        
+        Assert.True(category.IsActive);
+    }
+    
+    [Fact(DisplayName = nameof(DeactivateCategory))]
+    [Trait("Domain", "Category - Aggregates")]
+    public void DeactivateCategory()
+    {
+        var validData = new 
+        {
+            Name = "category name",
+            Description = "category description",
+        };
+
+        var category = new DomainEntity.Category(validData.Name, validData.Description, true);
+
+        category.Deactivate();
+        
+        Assert.False(category.IsActive);
     }
 }

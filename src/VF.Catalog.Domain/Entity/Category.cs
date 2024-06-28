@@ -48,4 +48,16 @@ public class Category : Entity
             throw new EntityValidationException(errorMessage.MaxLengthMessage(nameof(Description), 10000));
         
     }
+
+    public void Activate()
+    {
+        IsActive = true;
+        ValidateEntity();
+    }
+        
+    public void Deactivate()
+    {
+        IsActive = false;
+        ValidateEntity();
+    }
 }
